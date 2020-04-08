@@ -16,7 +16,7 @@ export function register(config) {
 
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register(`${window.location.port === "7000" ? 'service-worker.js' : 'sw.js'}`).then(function (registration) {
+      navigator.serviceWorker.register(`${window.location.port === "3000" || process.env.BUILD === 'Production' ? 'sw.js' : 'service-worker.js'}`).then(function (registration) {
         console.log('Worker registration is successful', registration.scope);
       }, function (err) {
         console.log('Worker registration has failed', err);
